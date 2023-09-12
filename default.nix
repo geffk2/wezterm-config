@@ -1,7 +1,4 @@
-{system ? builtins.currentSystem}:
-let 
-  pkgs = import <nixpkgs> {};
-in
+{system ? builtins.currentSystem, pkgs ? import <nixpkgs> {}}:
   pkgs.stdenv.mkDerivation {
     name = "katja-wezterm";
 
