@@ -68,10 +68,10 @@
        :tab_bar {
         :background colors.crust 
         :active_tab {
-          :bg_color :none
+          :bg_color :None
           :fg_color colors.subtext1
-          :intensity :bold
-          :underline :none
+          :intensity :Bold
+          :underline :None
           :italic false
           :strikethrough false
         }

@@ -24,13 +24,13 @@
           #(conditional_activate_pane $1 $2 dir key)
   ))
 
-[
+(local keys [
  {:action (act.SplitVertical {:domain :CurrentPaneDomain})   :key "-" :mods :LEADER}
  {:action (act.SplitHorizontal {:domain :CurrentPaneDomain}) :key "\\" :mods :LEADER}
  {:action (act.SplitHorizontal {:domain :CurrentPaneDomain}) :key "\'" :mods :LEADER}
 
  {:action act.TogglePaneZoomState :key :Z :mods :LEADER}
- {:action (act.SpawnTab {:domain :CurrentPaneDomain}) :key :C :mods :LEADER}
+ {:action (act.SpawnTab :CurrentPaneDomain) :key :C :mods :LEADER}
  {:action (act.CloseCurrentPane {:confirm false}) :key :Q :mods :LEADER}
  {:action (act.SendKey {:key :S :mods :CTRL}) :key :S :mods :CMD}
 
@@ -46,17 +46,23 @@
  {:action (act.AdjustPaneSize [:Up 3])     :key :K :mods :ALT}
  {:action (act.AdjustPaneSize [:Right 3])  :key :L :mods :ALT}
 
- (fcollect [i 1 9 1] 
-           {:action (act.ActivateTab (- i 1)) 
-            :key (tostring i)
-            :mods :LEADER})
-
- {:action (act.CopyTo :Clipboard)   :key :C :mods :CMD}
- {:action (act.CopyFrom :Clipboard) :key :V :mods :CMD}
+ {:action (act.CopyTo    :Clipboard)   :key :C :mods :CMD}
+ {:action (act.PasteFrom :Clipboard) :key :V :mods :CMD}
 
  {:action act.QuitApplication :key :Q :mods :CMD}
  {:action act.ShowLauncher    :key :L :mods :CMD}
 
- {:action (act.SendString "\x1b[13;5u") :key :ENTER :mods :CTRL}
- {:action (act.SendString "\x1b[13;2u") :key :ENTER :mods :SHIFT}
-]
+ {:action (act.SendString "\x1b[13;5u") :key :Enter :mods :CTRL}
+ {:action (act.SendString "\x1b[13;2u") :key :Enter :mods :SHIFT}
+])
+
+(for [i 1 9 1]
+  (table.insert keys {:action (act.ActivateTab (- i 1)) 
+          :key (tostring i)
+          :mods :LEADER}))
+
+; (fcollect [i 1 9 1] 
+;          {:action (act.ActivateTab (- i 1)) 
+;           :key (tostring i)
+;           :mods :LEADER})
+keys

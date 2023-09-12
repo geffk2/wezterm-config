@@ -1,5 +1,6 @@
 (local wez (require :wezterm))
 (local theme (include :theme))
+
 (local keys (include :keys))
 
 (local my_fonts 
