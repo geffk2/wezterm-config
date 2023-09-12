@@ -1,3 +1,4 @@
+{system ? builtins.currentSystem}:
 let 
   pkgs = import <nixpkgs> {};
 in
@@ -13,5 +14,6 @@ in
     src = ./.;
     entrypoint = "init.fnl";
 
-    system = builtins.currentSystem;
+    # system = builtins.currentSystem;
+    system = system;
   }
