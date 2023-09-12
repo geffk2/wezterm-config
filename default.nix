@@ -6,7 +6,6 @@
     args = [ ./builder.sh ];
 
     fennel = pkgs.luajitPackages.fennel;
-    coreutils = pkgs.coreutils;
 
     src = ./.;
     entrypoint = "init.fnl";
