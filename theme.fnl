@@ -92,9 +92,59 @@
           :fg_color colors.subtext0
         }
        }
-
        })
 
+
+(local wez (require :wezterm))
+(local nerd wez.nerdfonts)
+
+(local process_icons {
+      :docker         [ {:Foreground {:Color colors.blue}} {:Text nerd.linux_docker} ]
+      :docker-compose [ {:Foreground {:Color colors.blue}} {:Text nerd.linux_docker} ]
+      :lazydocker     [ {:Foreground {:Color colors.blue}} {:Text nerd.linux_docker} ]
+
+      :nvim [ {:Foreground {:Color colors.green}} {:Text nerd.custom_vim} ]
+      :vim  [ {:Foreground {:Color colors.green}} {:Text nerd.dev_vim} ]
+      :node [ {:Foreground {:Color colors.green}} {:Text nerd.mdi_hexagon} ]
+
+      :zsh  [ {:Foreground {:Color colors.peach}} {:Text nerd.dev_terminal} ]
+      :fish [ {:Foreground {:Color colors.peach}} {:Text nerd.dev_terminal} ]
+      :bash [ {:Foreground {:Color colors.peach}} {:Text nerd.dev_bash} ]
+
+      :htop [ {:Foreground {:Color colors.yellow}} {:Text nerd.mdi_chart_donut_variant} ]
+
+      :cargo [ {:Foreground {:Color colors.peach}} {:Text nerd.dev_rust} ]
+      :go [ {:Foreground {:Color colors.sapphire}} {:Text nerd.mdi_language_go} ]
+
+      :git     [ {:Foreground {:Color colors.peach}} {:Text nerd.dev_git} ]
+      :lazygit [ {:Foreground {:Color colors.peach}} {:Text nerd.dev_git} ]
+      })
+
+(fn default_format [pname] [
+                       {:Foreground {:Color colors.sky}}
+                       {:Text (string.format "[%s]" pname)}
+                       ])
+
+(fn get_process [tab]
+  (local pname (string.gsub tab.active_pane.foreground_process_name "(.*[/\\])(.*)" "%2"))
+  (wez.format (or (. process_icons pname) (default_format pname))))
+
+(fn get_cwd [tab] 
+  (local cwd tab.active_pane.current_working_dir)
+  (string.format "  %s" (string.gsub cwd "(.*[/\\])(.*)" "%2")))
+
+(wez.on "format-tab-title" 
+        (fn [tab]
+          (wez.format [
+                       {:Attribute {:Intensity :Half}}
+                       {:Text (string.format " %s  " (+ tab.tab_index 1))}
+                       :ResetAttributes
+                       {:Text (get_process tab)}
+                       {:Text " "}
+                       {:Text (get_cwd tab)}
+                       {:Foreground {:Color colors.base}}
+                       {:Text "  ▕"}
+                       ])))
 
 {
   :colors theme

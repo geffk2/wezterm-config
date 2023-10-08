@@ -29,28 +29,28 @@
  {:action (act.SplitHorizontal {:domain :CurrentPaneDomain}) :key "\\" :mods :LEADER}
  {:action (act.SplitHorizontal {:domain :CurrentPaneDomain}) :key "\'" :mods :LEADER}
 
- {:action act.TogglePaneZoomState :key :Z :mods :LEADER}
- {:action (act.SpawnTab :CurrentPaneDomain) :key :C :mods :LEADER}
- {:action (act.CloseCurrentPane {:confirm false}) :key :Q :mods :LEADER}
- {:action (act.SendKey {:key :S :mods :CTRL}) :key :S :mods :CMD}
+ {:action act.TogglePaneZoomState :key :z :mods :LEADER}
+ {:action (act.SpawnTab :CurrentPaneDomain)  :key :c :mods :LEADER}
+ {:action (act.CloseCurrentPane {:confirm false}) :key :q :mods :LEADER}
+ {:action (act.SendKey {:key :S :mods :CTRL}) :key :s :mods :CMD}
 
- {:action (act.ShowLauncherArgs {:flags "FUZZY|WORKSPACES"}) :key :S :mods :LEADER}
+ {:action (act.ShowLauncherArgs {:flags "FUZZY|WORKSPACES"}) :key :s :mods :LEADER}
 
- {:action (act.EmitEvent :ActivatePaneDirection-left)  :key :H :mods :CTRL}
- {:action (act.EmitEvent :ActivatePaneDirection-down)  :key :J :mods :CTRL}
- {:action (act.EmitEvent :ActivatePaneDirection-up)    :key :K :mods :CTRL}
- {:action (act.EmitEvent :ActivatePaneDirection-right) :key :L :mods :CTRL}
+ {:action (act.EmitEvent :ActivatePaneDirection-left)  :key :h :mods :CTRL}
+ {:action (act.EmitEvent :ActivatePaneDirection-down)  :key :j :mods :CTRL}
+ {:action (act.EmitEvent :ActivatePaneDirection-up)    :key :k :mods :CTRL}
+ {:action (act.EmitEvent :ActivatePaneDirection-right) :key :l :mods :CTRL}
 
- {:action (act.AdjustPaneSize [:Left 3])   :key :H :mods :ALT}
- {:action (act.AdjustPaneSize [:Down 3])   :key :J :mods :ALT}
- {:action (act.AdjustPaneSize [:Up 3])     :key :K :mods :ALT}
- {:action (act.AdjustPaneSize [:Right 3])  :key :L :mods :ALT}
+ {:action (act.AdjustPaneSize [:Left 3])   :key :h :mods :ALT}
+ {:action (act.AdjustPaneSize [:Down 3])   :key :j :mods :ALT}
+ {:action (act.AdjustPaneSize [:Up 3])     :key :k :mods :ALT}
+ {:action (act.AdjustPaneSize [:Right 3])  :key :l :mods :ALT}
 
- {:action (act.CopyTo    :Clipboard)   :key :C :mods :CMD}
- {:action (act.PasteFrom :Clipboard) :key :V :mods :CMD}
+ {:action (act.CopyTo    :Clipboard)   :key :c :mods :CMD}
+ {:action (act.PasteFrom :Clipboard) :key :v :mods :CMD}
 
- {:action act.QuitApplication :key :Q :mods :CMD}
- {:action act.ShowLauncher    :key :L :mods :CMD}
+ {:action act.QuitApplication :key :q :mods :CMD}
+ {:action act.ShowLauncher    :key :l :mods :CMD}
 
  {:action (act.SendString "\x1b[13;5u") :key :Enter :mods :CTRL}
  {:action (act.SendString "\x1b[13;2u") :key :Enter :mods :SHIFT}
@@ -65,4 +65,5 @@
 ;          {:action (act.ActivateTab (- i 1)) 
 ;           :key (tostring i)
 ;           :mods :LEADER})
+(wez.log_info keys)
 keys
