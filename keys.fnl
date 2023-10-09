@@ -13,10 +13,10 @@
       ))
 
 (local directions {
-       :left  :H 
-       :down  :J 
-       :up    :K 
-       :right :L
+       :Left  :h 
+       :Down  :j 
+       :Up    :k 
+       :Right :l
        })
 
 (each [dir key (pairs directions)] 
@@ -32,14 +32,14 @@
  {:action act.TogglePaneZoomState :key :z :mods :LEADER}
  {:action (act.SpawnTab :CurrentPaneDomain)  :key :c :mods :LEADER}
  {:action (act.CloseCurrentPane {:confirm false}) :key :q :mods :LEADER}
- {:action (act.SendKey {:key :S :mods :CTRL}) :key :s :mods :CMD}
+ {:action (act.SendKey {:key :s :mods :CTRL}) :key :s :mods :CMD}
 
  {:action (act.ShowLauncherArgs {:flags "FUZZY|WORKSPACES"}) :key :s :mods :LEADER}
 
- {:action (act.EmitEvent :ActivatePaneDirection-left)  :key :h :mods :CTRL}
- {:action (act.EmitEvent :ActivatePaneDirection-down)  :key :j :mods :CTRL}
- {:action (act.EmitEvent :ActivatePaneDirection-up)    :key :k :mods :CTRL}
- {:action (act.EmitEvent :ActivatePaneDirection-right) :key :l :mods :CTRL}
+ {:action (act.EmitEvent :ActivatePaneDirection-Left)  :key :h :mods :CTRL}
+ {:action (act.EmitEvent :ActivatePaneDirection-Down)  :key :j :mods :CTRL}
+ {:action (act.EmitEvent :ActivatePaneDirection-Up)    :key :k :mods :CTRL}
+ {:action (act.EmitEvent :ActivatePaneDirection-Right) :key :l :mods :CTRL}
 
  {:action (act.AdjustPaneSize [:Left 3])   :key :h :mods :ALT}
  {:action (act.AdjustPaneSize [:Down 3])   :key :j :mods :ALT}
